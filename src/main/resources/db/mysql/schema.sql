@@ -238,7 +238,8 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`geo_coordinates` (
 
 CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_type` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL DEFAULT 'unknown',
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `breed` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unq_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 1;
@@ -246,6 +247,7 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_type` (
 CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_type_translations` (
 	`id` INT NOT NULL AUTO_INCREMENT,
     `name_translation` VARCHAR(255) NOT NULL,
+    `breed_translation` VARCHAR(255) NOT NULL,
 	`language_id` INT NOT NULL,
     `animal_type_id` INT NOT NULL,
     PRIMARY KEY (`id`),
@@ -276,8 +278,6 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_status_translations` (
 CREATE TABLE IF NOT EXISTS `fluffybest`.`animal` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL DEFAULT NULL,
--- TODO: replace with external list and link via id.
-  `breed` VARCHAR(255) NULL DEFAULT NULL,
   `birth_date` DATE NULL DEFAULT NULL,
   `description` VARCHAR(15600) NULL DEFAULT NULL,
   `aggression_level` TINYINT NULL DEFAULT NULL,
@@ -299,7 +299,6 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`animal` (
 CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_translations` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `name_translation` VARCHAR(255) NULL DEFAULT NULL,
-    `breed_translation` VARCHAR(255) NULL DEFAULT NULL,
     `description_translation` VARCHAR(15800) NULL DEFAULT NULL,
     `full_bio_translation` TEXT NULL DEFAULT NULL,
  	`language_id` INT NOT NULL,

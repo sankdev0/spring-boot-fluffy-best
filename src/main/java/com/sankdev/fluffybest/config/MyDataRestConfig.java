@@ -1,7 +1,9 @@
 package com.sankdev.fluffybest.config;
 
+import com.sankdev.fluffybest.entity.Language;
 import com.sankdev.fluffybest.entity.Product;
 import com.sankdev.fluffybest.entity.ProductCategory;
+import com.sankdev.fluffybest.entity.location.Country;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -31,5 +33,20 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
         .withCollectionExposure(
             ((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
+
+    // Disable HTTP methods for Language: PUT, POST and DELETE.
+    config.getExposureConfiguration()
+        .forDomainType(Language.class)
+        .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+        .withCollectionExposure(
+            ((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
+
+    // Disable HTTP methods for Country: PUT, POST and DELETE.
+    config.getExposureConfiguration()
+        .forDomainType(Country.class)
+        .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+        .withCollectionExposure(
+            ((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
+
   }
 }

@@ -168,24 +168,24 @@ INSERT INTO geo_coordinates (country_id, latitude, longitude)
 VALUES (1, 51.77146972664905, 55.19355081170561);
 
 -- Dog
-INSERT INTO animal_type (name)
-VALUES ('Dog');
+INSERT INTO animal_type (name, breed)
+VALUES ('Dog', 'mixed');
 
 -- Cat
-INSERT INTO animal_type (name)
-VALUES ('Cat');
+INSERT INTO animal_type (name, breed)
+VALUES ('Cat', 'mixed');
 
-INSERT INTO animal_type_translations (name_translation, language_id, animal_type_id)
-VALUES ('Dog', 1, 1);
+INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
+VALUES ('Dog', 'mixed', 1, 1);
 
-INSERT INTO animal_type_translations (name_translation, language_id, animal_type_id)
-VALUES ('Cat', 1, 2);
+INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
+VALUES ('Cat', 'mixed', 1, 2);
 
-INSERT INTO animal_type_translations (name_translation, language_id, animal_type_id)
-VALUES ('Собака', 2, 1);
+INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
+VALUES ('Собака', 'беспородная', 2, 1);
 
-INSERT INTO animal_type_translations (name_translation, language_id, animal_type_id)
-VALUES ('Кошка', 2, 2);
+INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
+VALUES ('Кошка', 'беспородная', 2, 2);
 
 -- Chipped means All good
 INSERT INTO animal_status (name)
