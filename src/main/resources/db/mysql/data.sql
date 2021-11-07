@@ -267,7 +267,7 @@ VALUES (4, 1);
 
 -- Marketplace section of the application
 -- -------------------------------------
-INSERT INTO product_category(category_name) VALUES ('BOOKS');
+INSERT INTO product_category(name) VALUES ('BOOKS');
 
 INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
 unit_price, category_id, date_created)

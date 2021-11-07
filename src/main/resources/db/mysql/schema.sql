@@ -336,12 +336,12 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_address` (
 
 CREATE TABLE IF NOT EXISTS `fluffybest`.`product_category` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `category_name` VARCHAR(255) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS `fluffybest`.`product_category_translations` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-    `category_name_translation` VARCHAR(255) NOT NULL,
+    `name_translation` VARCHAR(255) NOT NULL,
 	`language_id` INT NOT NULL,
     `product_category_id` BIGINT NOT NULL,
     PRIMARY KEY (`id`),
