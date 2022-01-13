@@ -1,4 +1,4 @@
-package com.sankdev.fluffybest.dao;
+package com.sankdev.fluffybest.repository;
 
 import com.sankdev.fluffybest.entity.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

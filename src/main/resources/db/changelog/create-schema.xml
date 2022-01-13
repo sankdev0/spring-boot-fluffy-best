@@ -1,0 +1,710 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="san k" id="1642011696189-1">
+        <createTable tableName="address">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="address_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locality_id" type="BIGINT"/>
+            <column name="region_id" type="INT"/>
+            <column name="post_office_box_number" type="VARCHAR(80)"/>
+            <column name="postal_code" type="VARCHAR(80)"/>
+            <column defaultValue="No address" name="street" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="building" type="VARCHAR(80)"/>
+            <column name="apartment" type="VARCHAR(80)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-2">
+        <createTable tableName="address_type">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(80)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-3">
+        <createTable tableName="address_type_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-4">
+        <createTable tableName="animal">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="birth_date" type="date"/>
+            <column name="description" type="VARCHAR(15600)"/>
+            <column name="aggression_level" type="TINYINT(3)"/>
+            <column name="full_bio" type="TEXT"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="true" name="active" type="BIT(1)"/>
+            <column name="date_created" type="datetime"/>
+            <column name="last_updated" type="datetime"/>
+            <column name="type_id" type="INT"/>
+            <column name="status_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-5">
+        <createTable tableName="animal_address">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="animal_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-6">
+        <createTable tableName="animal_geo_coordinates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="animal_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="geo_coordinates_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-7">
+        <createTable tableName="animal_status">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValue="unknown" name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-8">
+        <createTable tableName="animal_status_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="animal_status_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-9">
+        <createTable tableName="animal_translations">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)"/>
+            <column name="description_translation" type="VARCHAR(15800)"/>
+            <column name="full_bio_translation" type="TEXT"/>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="animal_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-10">
+        <createTable tableName="animal_type">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="breed" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-11">
+        <createTable tableName="animal_type_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="breed_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="animal_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-12">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="alpha_two_code" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="short_name" type="VARCHAR(80)"/>
+            <column name="name" type="VARCHAR(120)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-13">
+        <createTable tableName="country_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="short_name_translation" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-14">
+        <createTable tableName="geo_coordinates">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="address_id" type="BIGINT"/>
+            <column name="country_id" type="INT"/>
+            <column name="elevation" type="INT"/>
+            <column name="latitude" type="DECIMAL(16, 14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude" type="DECIMAL(17, 14)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-15">
+        <createTable tableName="language">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="alpha_two_code" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="native_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_format" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-16">
+        <createTable tableName="locality">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="type_id" type="INT"/>
+            <column name="region_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-17">
+        <createTable tableName="locality_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locality_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-18">
+        <createTable tableName="locality_type">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-19">
+        <createTable tableName="locality_type_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locality_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-20">
+        <createTable tableName="product">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="sku" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="unit_price" type="DECIMAL(13, 2)"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="true" name="active" type="BIT(1)"/>
+            <column name="units_in_stock" type="INT"/>
+            <column name="date_created" type="datetime"/>
+            <column name="last_updated" type="datetime"/>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-21">
+        <createTable tableName="product_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-22">
+        <createTable tableName="product_category_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-23">
+        <createTable tableName="product_translations">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-24">
+        <createTable tableName="region">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="type_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-25">
+        <createTable tableName="region_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-26">
+        <createTable tableName="region_type">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-27">
+        <createTable tableName="region_type_translations">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name_translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-28">
+        <createIndex indexName="fk_address" tableName="animal_address">
+            <column name="address_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-29">
+        <createIndex indexName="fk_address" tableName="geo_coordinates">
+            <column name="address_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-30">
+        <createIndex indexName="fk_address_type" tableName="address">
+            <column name="address_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-31">
+        <createIndex indexName="fk_address_type" tableName="address_type_translations">
+            <column name="address_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-32">
+        <createIndex indexName="fk_animal" tableName="animal_address">
+            <column name="animal_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-33">
+        <createIndex indexName="fk_animal" tableName="animal_geo_coordinates">
+            <column name="animal_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-34">
+        <createIndex indexName="fk_animal_id" tableName="animal_translations">
+            <column name="animal_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-35">
+        <createIndex indexName="fk_animal_status" tableName="animal_status_translations">
+            <column name="animal_status_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-36">
+        <createIndex indexName="fk_animal_type" tableName="animal_type_translations">
+            <column name="animal_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-37">
+        <createIndex indexName="fk_category" tableName="product">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-38">
+        <createIndex indexName="fk_country" tableName="address">
+            <column name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-39">
+        <createIndex indexName="fk_country" tableName="country_translations">
+            <column name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-40">
+        <createIndex indexName="fk_country" tableName="geo_coordinates">
+            <column name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-41">
+        <createIndex indexName="fk_geo_coordinates" tableName="animal_geo_coordinates">
+            <column name="geo_coordinates_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-42">
+        <createIndex indexName="fk_language" tableName="address_type_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-43">
+        <createIndex indexName="fk_language" tableName="animal_status_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-44">
+        <createIndex indexName="fk_language" tableName="animal_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-45">
+        <createIndex indexName="fk_language" tableName="animal_type_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-46">
+        <createIndex indexName="fk_language" tableName="country_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-47">
+        <createIndex indexName="fk_language" tableName="locality_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-48">
+        <createIndex indexName="fk_language" tableName="locality_type_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-49">
+        <createIndex indexName="fk_language" tableName="product_category_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-50">
+        <createIndex indexName="fk_language" tableName="product_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-51">
+        <createIndex indexName="fk_language" tableName="region_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-52">
+        <createIndex indexName="fk_language" tableName="region_type_translations">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-53">
+        <createIndex indexName="fk_locality" tableName="address">
+            <column name="locality_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-54">
+        <createIndex indexName="fk_locality" tableName="locality_translations">
+            <column name="locality_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-55">
+        <createIndex indexName="fk_locality_type" tableName="locality_type_translations">
+            <column name="locality_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-56">
+        <createIndex indexName="fk_product" tableName="product_translations">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-57">
+        <createIndex indexName="fk_product_category" tableName="product_category_translations">
+            <column name="product_category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-58">
+        <createIndex indexName="fk_region" tableName="address">
+            <column name="region_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-59">
+        <createIndex indexName="fk_region" tableName="locality">
+            <column name="region_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-60">
+        <createIndex indexName="fk_region_translations_region" tableName="region_translations">
+            <column name="region_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-61">
+        <createIndex indexName="fk_region_type" tableName="region_type_translations">
+            <column name="region_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-62">
+        <createIndex indexName="fk_status" tableName="animal">
+            <column name="status_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-63">
+        <createIndex indexName="fk_type" tableName="animal">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-64">
+        <createIndex indexName="fk_type" tableName="locality">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-65">
+        <createIndex indexName="fk_type" tableName="region">
+            <column name="type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-66">
+        <createIndex indexName="name" tableName="animal">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-67">
+        <createIndex indexName="name" tableName="locality">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-68">
+        <createIndex indexName="name_translation" tableName="animal_translations">
+            <column name="name_translation"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-69">
+        <addForeignKeyConstraint baseColumnNames="address_type_id" baseTableName="address_type_translations" constraintName="address_type_translations_address_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="address_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-70">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="address_type_translations" constraintName="address_type_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-71">
+        <addForeignKeyConstraint baseColumnNames="animal_status_id" baseTableName="animal_status_translations" constraintName="animal_status_translations_animal_status" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal_status" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-72">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="animal_status_translations" constraintName="animal_status_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-73">
+        <addForeignKeyConstraint baseColumnNames="animal_id" baseTableName="animal_translations" constraintName="animal_translations_animal" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-74">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="animal_translations" constraintName="animal_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-75">
+        <addForeignKeyConstraint baseColumnNames="animal_type_id" baseTableName="animal_type_translations" constraintName="animal_type_translations_animal_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-76">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="animal_type_translations" constraintName="animal_type_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-77">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="address" constraintName="fk_address_country" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-78">
+        <addForeignKeyConstraint baseColumnNames="locality_id" baseTableName="address" constraintName="fk_address_locality" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="locality" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-79">
+        <addForeignKeyConstraint baseColumnNames="region_id" baseTableName="address" constraintName="fk_address_region" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-80">
+        <addForeignKeyConstraint baseColumnNames="address_type_id" baseTableName="address" constraintName="fk_address_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="address_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-81">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="animal_address" constraintName="fk_animal_address_address" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-82">
+        <addForeignKeyConstraint baseColumnNames="animal_id" baseTableName="animal_address" constraintName="fk_animal_address_animal" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-83">
+        <addForeignKeyConstraint baseColumnNames="animal_id" baseTableName="animal_geo_coordinates" constraintName="fk_animal_geo_coordinates_animal" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-84">
+        <addForeignKeyConstraint baseColumnNames="geo_coordinates_id" baseTableName="animal_geo_coordinates" constraintName="fk_animal_geo_coordinates_coordinates" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="geo_coordinates" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-85">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="animal" constraintName="fk_animal_status" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal_status" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-86">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="animal" constraintName="fk_animal_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="animal_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-87">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product" constraintName="fk_category" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product_category" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-88">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="country_translations" constraintName="fk_country_translations_country" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-89">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="country_translations" constraintName="fk_country_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-90">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="geo_coordinates" constraintName="fk_geo_coordinates_address" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-91">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="geo_coordinates" constraintName="fk_geo_coordinates_country" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="country" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-92">
+        <addForeignKeyConstraint baseColumnNames="region_id" baseTableName="locality" constraintName="fk_locality_region" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-93">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="locality" constraintName="fk_locality_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="locality_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-94">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="region" constraintName="fk_region_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-95">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="locality_translations" constraintName="locality_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-96">
+        <addForeignKeyConstraint baseColumnNames="locality_id" baseTableName="locality_translations" constraintName="locality_translations_locality" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="locality" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-97">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="locality_type_translations" constraintName="locality_type_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-98">
+        <addForeignKeyConstraint baseColumnNames="locality_type_id" baseTableName="locality_type_translations" constraintName="locality_type_translations_locality_type" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="locality_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-99">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="product_category_translations" constraintName="product_category_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-100">
+        <addForeignKeyConstraint baseColumnNames="product_category_id" baseTableName="product_category_translations" constraintName="product_category_translations_product_category" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product_category" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-101">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="product_translations" constraintName="product_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-102">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="product_translations" constraintName="product_translations_product" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-103">
+        <addForeignKeyConstraint baseColumnNames="region_id" baseTableName="region_translations" constraintName="region_translations_country" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-104">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="region_translations" constraintName="region_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-105">
+        <addForeignKeyConstraint baseColumnNames="region_type_id" baseTableName="region_type_translations" constraintName="region_type_translations_country" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region_type" validate="true"/>
+    </changeSet>
+    <changeSet author="san k" id="1642011696189-106">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="region_type_translations" constraintName="region_type_translations_language" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="language" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
