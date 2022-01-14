@@ -22,16 +22,16 @@ VALUES ('RU');
 INSERT INTO country (alpha_two_code)
 VALUES ('US');
 
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
+INSERT INTO country_translation (short_name, name, language_id, country_id)
 VALUES ('Russia', 'Russian Federation', 1, 1);
 
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
+INSERT INTO country_translation (short_name, name, language_id, country_id)
 VALUES ('USA', 'United States of America', 1, 2);
 
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
+INSERT INTO country_translation (short_name, name, language_id, country_id)
 VALUES ('Россия', 'Российская Федерация', 2, 1);
 
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
+INSERT INTO country_translation (short_name, name, language_id, country_id)
 VALUES ('США', 'Соединенные Штаты Америки', 2, 2);
 
 -- TODO: replace with batch insert of empty rows, if possible.
@@ -227,27 +227,14 @@ VALUES ('мертв', 1, 3);
 INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
 VALUES ('под опекой', 1, 4);
 
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2010-01-02', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 1);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2012-01-02', 4, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 2);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES (NULL, 6, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 3);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2012-03-11', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 4);
-
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Боба', 'Большой пес черного чвета с коричневой грудью. Любит прыгать, адекватный',
-2, 1);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Гефест', 'Мелкий упырь, коренастый. Перелом лапы после наезда машины',
-2, 2);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Дана', 'Гаражная собака, реагирует на заход на территорию.',
-2, 3);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Шуша', 'Мелкая дворняжка. Временно на передержке.',
-2, 4);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Боба', '2010-01-02', 'Большой пес черного чвета с коричневой грудью. Любит прыгать, адекватный', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 1);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Гефест', '2012-01-02', 'Мелкий упырь, коренастый. Перелом лапы после наезда машины', 4, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 2);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Дана', NULL, 'Гаражная собака, реагирует на заход на территорию.', 6, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 3);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Шуша', '2012-03-11', 'Мелкая дворняжка. Временно на передержке.', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 4);
 
 INSERT INTO animal_geo_coordinates (animal_id, geo_coordinates_id)
 VALUES (1, 1);
