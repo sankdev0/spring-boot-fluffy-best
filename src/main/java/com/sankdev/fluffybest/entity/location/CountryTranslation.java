@@ -1,9 +1,11 @@
 package com.sankdev.fluffybest.entity.location;
 
-import com.sankdev.fluffybest.entity.BaseEntity;
 import com.sankdev.fluffybest.entity.Language;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -13,7 +15,11 @@ import lombok.Data;
 @Entity
 @Table(name = "country_translations")
 @Data
-public class CountryTranslation extends BaseEntity {
+public class CountryTranslation {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
   @Column(name = "short_name_translation")
   private String shortNameTranslation;

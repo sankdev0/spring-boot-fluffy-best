@@ -351,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`product_category_translations` (
     ) ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS `fluffybest`.`product` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `id` BINARY(16) NOT NULL,
   `sku` VARCHAR(255) DEFAULT NULL,
   `name` VARCHAR(255) DEFAULT NULL,
   `description` VARCHAR(255) DEFAULT NULL,
@@ -365,14 +365,14 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`product` (
   PRIMARY KEY (`id`),
   KEY `fk_category` (`category_id`),
   CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT = 1;
+) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `fluffybest`.`product_translations` (
 	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) DEFAULT NULL,
 	`description` VARCHAR(255) DEFAULT NULL,
 	`language_id` INT NOT NULL,
-	`product_id` BIGINT NOT NULL,
+	`product_id` BINARY(16) NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `fk_language` (`language_id`),
     CONSTRAINT `product_translations_language` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`),
