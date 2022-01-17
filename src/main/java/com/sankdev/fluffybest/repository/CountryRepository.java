@@ -1,6 +1,6 @@
-package com.sankdev.fluffybest.repository.location;
+package com.sankdev.fluffybest.repository;
 
-import com.sankdev.fluffybest.entity.location.Country;
+import com.sankdev.fluffybest.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CountryRepository extends JpaRepository<Country, Long> {

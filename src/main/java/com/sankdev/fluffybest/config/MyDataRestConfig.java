@@ -1,9 +1,9 @@
 package com.sankdev.fluffybest.config;
 
+import com.sankdev.fluffybest.entity.Country;
 import com.sankdev.fluffybest.entity.Language;
 import com.sankdev.fluffybest.entity.Product;
 import com.sankdev.fluffybest.entity.ProductCategory;
-import com.sankdev.fluffybest.entity.location.Country;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

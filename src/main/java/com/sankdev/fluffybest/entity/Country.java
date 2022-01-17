@@ -1,4 +1,4 @@
-package com.sankdev.fluffybest.entity.location;
+package com.sankdev.fluffybest.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +27,4 @@ public class Country {
   @Column(name = "alpha_two_code")
   private String alphaTwoCode;
 
-  @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  private Set<CountryTranslation> translations = new HashSet<>();
 }
