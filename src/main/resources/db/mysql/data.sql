@@ -16,123 +16,45 @@ VALUES ('EN', 'English', 'English','mon-dd, yyyy', 'USD');
 INSERT INTO language (alpha_two_code, name, native_name, date_format, currency)
 VALUES ('RU', 'Russian', 'Русский','dd.mm.yyyy', 'RUB');
 
-INSERT INTO country (alpha_two_code)
-VALUES ('RU');
+INSERT INTO country (alpha_two_code, short_name, name)
+VALUES ('RU','Россия', 'Российская Федерация');
 
-INSERT INTO country (alpha_two_code)
-VALUES ('US');
-
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
-VALUES ('Russia', 'Russian Federation', 1, 1);
-
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
-VALUES ('USA', 'United States of America', 1, 2);
-
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
-VALUES ('Россия', 'Российская Федерация', 2, 1);
-
-INSERT INTO country_translations (short_name_translation, name_translation, language_id, country_id)
-VALUES ('США', 'Соединенные Штаты Америки', 2, 2);
+INSERT INTO country (alpha_two_code, short_name, name)
+VALUES ('US', 'США', 'Соединенные Штаты Америки');
 
 -- TODO: replace with batch insert of empty rows, if possible.
-INSERT INTO region_type ()
-VALUES ();
+INSERT INTO region_type (name)
+VALUES ('область');
 
-INSERT INTO region_type ()
-VALUES ();
+INSERT INTO region_type (name)
+VALUES ('республика');
 
-INSERT INTO region_type ()
-VALUES ();
+INSERT INTO region_type (name)
+VALUES ('штат');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('oblast', 1, 1);
+INSERT INTO region (type_id, name)
+VALUES (1, 'Оренбургская');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('respublica', 1, 2);
+INSERT INTO region (type_id, name)
+VALUES (2, 'Башкортостан');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('state', 1, 3);
+INSERT INTO region (type_id, name)
+VALUES (3, 'Калифорния');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('область', 2, 1);
+INSERT INTO locality_type (name)
+VALUES ('город');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('республика', 2, 2);
+INSERT INTO locality (type_id, region_id, name)
+VALUES (1, 1, 'Оренбург');
 
-INSERT INTO region_type_translations (name_translation, language_id, region_type_id)
-VALUES ('штат', 2, 3);
+INSERT INTO locality (type_id, region_id, name)
+VALUES (1, 2, 'Уфа');
 
-INSERT INTO region (type_id)
-VALUES (1);
+INSERT INTO locality (type_id, region_id, name)
+VALUES (1, 3, 'Сан-Франциско');
 
-INSERT INTO region (type_id)
-VALUES (2);
-
-INSERT INTO region (type_id)
-VALUES (3);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('Orenburgskaya', 1, 1);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('Bashkortostan', 1, 2);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('California', 1, 3);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('Оренбургская', 2, 1);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('Башкортостан', 2, 2);
-
-INSERT INTO region_translations (name_translation, language_id, region_id)
-VALUES ('Калифорния', 2, 3);
-
-INSERT INTO locality_type ()
-VALUES ();
-
-INSERT INTO locality_type_translations (name_translation, language_id, locality_type_id)
-VALUES ('city', 1, 1);
-
-INSERT INTO locality_type_translations (name_translation, language_id, locality_type_id)
-VALUES ('город', 2, 1);
-
-INSERT INTO locality (type_id, region_id)
-VALUES (1, 1);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('Orenburg', 1, 1);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('Оренбург', 2, 1);
-
-INSERT INTO locality (type_id, region_id)
-VALUES (1, 2);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('Ufa', 1, 2);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('Уфа', 2, 2);
-
-INSERT INTO locality (type_id, region_id)
-VALUES (1, 3);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('San-Franсisco', 1, 3);
-
-INSERT INTO locality_translations (name_translation, language_id, locality_id)
-VALUES ('Сан-Франциско', 2, 3);
-
-INSERT INTO address_type ()
-VALUES ();
-
-INSERT INTO address_type_translations (name_translation, language_id, address_type_id)
-VALUES ('postal', 1, 1);
-
-INSERT INTO address_type_translations (name_translation, language_id, address_type_id)
-VALUES ('почтовый', 2, 1);
+INSERT INTO address_type (name)
+VALUES ('почтовый');
 
 INSERT INTO address (address_type_id, country_id, locality_id, region_id, postal_code, street, building)
 VALUES (1, 1, 1, 1, '460021', 'ул. Чкалова',  '15А');
@@ -169,85 +91,37 @@ VALUES (1, 51.77146972664905, 55.19355081170561);
 
 -- Dog
 INSERT INTO animal_type (name, breed)
-VALUES ('Dog', 'mixed');
+VALUES ('Собака', 'беспородная');
 
 -- Cat
 INSERT INTO animal_type (name, breed)
-VALUES ('Cat', 'mixed');
-
-INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
-VALUES ('Dog', 'mixed', 1, 1);
-
-INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
-VALUES ('Cat', 'mixed', 1, 2);
-
-INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
-VALUES ('Собака', 'беспородная', 2, 1);
-
-INSERT INTO animal_type_translations (name_translation, breed_translation, language_id, animal_type_id)
-VALUES ('Кошка', 'беспородная', 2, 2);
+VALUES ('Кошка', 'беспородная');
 
 -- Chipped means All good
 INSERT INTO animal_status (name)
-VALUES ('chipped');
+VALUES ('чипирован');
 
 -- In distress
 INSERT INTO animal_status (name)
-VALUES ('in distress');
+VALUES ('в беде');
 
 -- Died
 INSERT INTO animal_status (name)
-VALUES ('dead');
+VALUES ('мертв');
 
 -- In care
 INSERT INTO animal_status (name)
-VALUES ('in care');
+VALUES ('под опекой');
 
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('chipped', 1, 1);
 
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('in distress', 1, 2);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('dead', 1, 3);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('in care', 1, 4);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('чипирован', 1, 1);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('в беде', 1, 2);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('мертв', 1, 3);
-
-INSERT INTO animal_status_translations (name_translation, language_id, animal_status_id)
-VALUES ('под опекой', 1, 4);
-
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2010-01-02', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 1);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2012-01-02', 4, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 2);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES (NULL, 6, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 3);
-INSERT INTO animal (birth_date, aggression_level, image_url, date_created, last_updated, type_id, status_id)
-VALUES ('2012-03-11', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 4);
-
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Боба', 'Большой пес черного чвета с коричневой грудью. Любит прыгать, адекватный',
-2, 1);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Гефест', 'Мелкий упырь, коренастый. Перелом лапы после наезда машины',
-2, 2);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Дана', 'Гаражная собака, реагирует на заход на территорию.',
-2, 3);
-INSERT INTO animal_translations (name_translation, description_translation, language_id, animal_id)
-VALUES ('Шуша', 'Мелкая дворняжка. Временно на передержке.',
-2, 4);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Боба', '2010-01-02', 'Большой пес черного чвета с коричневой грудью. Любит прыгать, адекватный', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 1);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Гефест', '2012-01-02', 'Мелкий упырь, коренастый. Перелом лапы после наезда машины', 4, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 2);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Дана', NULL, 'Гаражная собака, реагирует на заход на территорию.', 6, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 3);
+INSERT INTO animal (name, birth_date, description, aggression_level, image_url, date_created, last_updated, type_id, status_id)
+VALUES ('Шуша', '2012-03-11', 'Мелкая дворняжка. Временно на передержке.', 0, 'assets/images/products/placeholder.png', NOW(), NOW(), 1, 4);
 
 INSERT INTO animal_geo_coordinates (animal_id, geo_coordinates_id)
 VALUES (1, 1);

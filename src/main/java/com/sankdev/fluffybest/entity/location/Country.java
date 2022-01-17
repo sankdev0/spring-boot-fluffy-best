@@ -1,9 +1,11 @@
 package com.sankdev.fluffybest.entity.location;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,15 +24,9 @@ public class Country {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name")
-  private String name;
-
   @Column(name = "alpha_two_code")
   private String alphaTwoCode;
 
-  @Column(name = "short_name")
-  private String shortName;
-
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
-  private Set<CountryTranslation> translations;
+  @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  private Set<CountryTranslation> translations = new HashSet<>();
 }
