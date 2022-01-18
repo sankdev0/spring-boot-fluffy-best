@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`address_type`
 -- Follows recommendations on https://schema.org/PostalAddress
 CREATE TABLE IF NOT EXISTS `fluffybest`.`address`
 (
-    `id`                     BIGINT       NOT NULL AUTO_INCREMENT,
+    `id`                     BINARY(16)       NOT NULL,
     `address_type_id`        INT          NOT NULL,              -- TODO fill in with viable default
     `country_id`             INT          NOT NULL,              -- The country. For example, USA.
     `locality_id`            BIGINT       NULL     DEFAULT NULL, -- The locality in which the street address is
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`address`
 CREATE TABLE IF NOT EXISTS `fluffybest`.`geo_coordinates`
 (
     `id`         BIGINT          NOT NULL AUTO_INCREMENT,
-    `address_id` BIGINT          NULL DEFAULT NULL, -- For handling coordinates of a certain address
+    `address_id` BINARY(16)      NULL DEFAULT NULL, -- For handling coordinates of a certain address
     `country_id` INT             NULL DEFAULT NULL,
     `elevation`  INT             NULL DEFAULT NULL, -- WGS84
     `latitude`   DECIMAL(16, 14) NOT NULL,          -- WGS84
@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `fluffybest`.`animal_address`
 (
     `id`         BIGINT     NOT NULL AUTO_INCREMENT,
     `animal_id`  BINARY(16) NOT NULL,
-    `address_id` BIGINT     NOT NULL,
+    `address_id` BINARY(16) NOT NULL,
     PRIMARY KEY (`id`),
     KEY `fk_animal` (`animal_id`),
     CONSTRAINT `fk_animal_address_animal` FOREIGN KEY (`animal_id`) REFERENCES `animal` (`id`),

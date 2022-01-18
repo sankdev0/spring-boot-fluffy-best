@@ -32,7 +32,7 @@ public class AnimalTypeRestController {
   @GetMapping(value = "/{animalTypeId}/animals", produces = {"application/hal+json"})
   public CollectionModel<Animal> getAnimalsForAnimalType(@PathVariable final String animalTypeId) {
     int theId = Integer.parseInt(animalTypeId);
-    List<Animal> animals = animalService.findAnimalsByType(theId);
+    List<Animal> animals = animalService.getAnimalsByType(theId);
 
     animals.forEach(animal -> {
       Link selfLink = linkTo(methodOn(AnimalRestController.class)

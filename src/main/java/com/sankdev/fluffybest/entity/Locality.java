@@ -7,32 +7,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "country")
-@Getter
+@Table(name = "locality")
 @Setter
-public class Country {
+@Getter
+public class Locality {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  @Column(name = "alpha_two_code")
-  private String alphaTwoCode;
-
-  @Column(name = "short_name")
-  private String shortName;
+  Long id;
 
   @Column(name = "name")
   private String name;
 
+  @ManyToOne
+  @JoinColumn(name = "type_id")
+  private LocalityType type;
+
+  @ManyToOne
+  @JoinColumn(name = "region_id")
+  private Region region;
+
   @JsonIgnore
-  @OneToMany(mappedBy = "country")
+  @OneToMany(mappedBy = "locality")
   private List<Address> addresses;
 
 }

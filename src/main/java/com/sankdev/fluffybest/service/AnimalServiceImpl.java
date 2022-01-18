@@ -22,12 +22,12 @@ public class AnimalServiceImpl implements AnimalService {
   }
 
   @Override
-  public Optional<Animal> findAnimalById(UUID uuid) {
+  public Optional<Animal> getAnimalById(UUID uuid) {
     return animalRepository.findById(uuid);
   }
 
   @Override
-  public List<Animal> findAnimalsByType(int theTypeId) {
+  public List<Animal> getAnimalsByType(int theTypeId) {
     return animalRepository.findAllByType_Id(theTypeId);
   }
 }

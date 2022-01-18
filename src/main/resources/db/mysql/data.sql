@@ -56,17 +56,20 @@ VALUES (1, 3, 'Сан-Франциско');
 INSERT INTO address_type (name)
 VALUES ('почтовый');
 
-INSERT INTO address (address_type_id, country_id, locality_id, region_id, postal_code, street,
+set @address_id1 = UUID_TO_BIN(UUID());
+INSERT INTO address (id, address_type_id, country_id, locality_id, region_id, postal_code, street,
                      building)
-VALUES (1, 1, 1, 1, '460021', 'ул. Чкалова', '15А');
+VALUES (@address_id1, 1, 1, 1, 1, '460021', 'ул. Чкалова', '15А');
 
-INSERT INTO address (address_type_id, country_id, locality_id, region_id, postal_code, street,
+set @address_id2 = UUID_TO_BIN(UUID());
+INSERT INTO address (id, address_type_id, country_id, locality_id, region_id, postal_code, street,
                      building)
-VALUES (1, 1, 2, 2, '320011', 'ул. Солнечная', '22');
+VALUES (@address_id2, 1, 1, 2, 2, '320011', 'ул. Солнечная', '22');
 
-INSERT INTO address (address_type_id, country_id, locality_id, region_id, postal_code, street,
+set @address_id3 = UUID_TO_BIN(UUID());
+INSERT INTO address (id, address_type_id, country_id, locality_id, region_id, postal_code, street,
                      building)
-VALUES (1, 2, 3, 3, '3571', 'Flowers str', 'Cray house');
+VALUES (@address_id3, 1, 2, 3, 3, '3571', 'Flowers str', 'Cray house');
 
 -- 1
 INSERT INTO geo_coordinates (country_id, latitude, longitude)
@@ -155,7 +158,7 @@ INSERT INTO animal_geo_coordinates (animal_id, geo_coordinates_id)
 VALUES (@animal_id_4, 6);
 
 INSERT INTO animal_address (animal_id, address_id)
-VALUES (@animal_id_4, 1);
+VALUES (@animal_id_4, @address_id1);
 
 -- Marketplace section of the application
 -- -------------------------------------

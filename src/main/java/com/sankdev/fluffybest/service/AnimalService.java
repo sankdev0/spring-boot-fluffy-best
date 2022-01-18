@@ -9,7 +9,7 @@ public interface AnimalService {
 
   List<Animal> getAllAnimals();
 
-  Optional<Animal> findAnimalById(UUID uuid);
+  Optional<Animal> getAnimalById(UUID uuid);
 
-  List<Animal> findAnimalsByType(int theTypeId);
+  List<Animal> getAnimalsByType(int theTypeId);
 }

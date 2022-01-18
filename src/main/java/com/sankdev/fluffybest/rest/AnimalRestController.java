@@ -40,7 +40,7 @@ public class AnimalRestController {
 
   @GetMapping("/{animalId}")
   public Animal getAnimalById(@PathVariable String animalId) {
-    return animalService.findAnimalById(UUID.fromString(animalId)).orElseThrow();
+    return animalService.getAnimalById(UUID.fromString(animalId)).orElseThrow();
   }
 
 }

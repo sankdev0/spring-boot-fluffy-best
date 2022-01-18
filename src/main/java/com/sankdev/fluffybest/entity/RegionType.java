@@ -2,6 +2,7 @@ package com.sankdev.fluffybest.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,26 +14,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "country")
+@Table(name = "region_type")
 @Getter
 @Setter
-public class Country {
+public class RegionType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  @Column(name = "alpha_two_code")
-  private String alphaTwoCode;
-
-  @Column(name = "short_name")
-  private String shortName;
+  int id;
 
   @Column(name = "name")
   private String name;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "country")
-  private List<Address> addresses;
+  @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+  private List<Region> regions;
 
 }
