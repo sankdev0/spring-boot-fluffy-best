@@ -1,11 +1,10 @@
-package com.sankdev.fluffybest.entity.location;
+package com.sankdev.fluffybest.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,18 +14,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "country")
+@Table(name = "region_type")
 @Getter
 @Setter
-public class Country {
+public class RegionType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  int id;
 
-  @Column(name = "alpha_two_code")
-  private String alphaTwoCode;
+  @Column(name = "name")
+  private String name;
 
-  @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  private Set<CountryTranslation> translations = new HashSet<>();
+  @JsonIgnore
+  @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+  private List<Region> regions;
+
 }
