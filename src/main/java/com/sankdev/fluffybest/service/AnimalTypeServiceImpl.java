@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
+@Transactional(readOnly = true)
 public class AnimalTypeServiceImpl implements AnimalTypeService{
 
   private final AnimalTypeRepository animalTypeRepository;
 
   @Override
-  @Transactional
   public List<AnimalType> findAnimalTypes() {
     return animalTypeRepository.findAll();
   }

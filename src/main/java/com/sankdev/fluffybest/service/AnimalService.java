@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface AnimalService {
 
-  List<Animal> findAnimals();
+  List<Animal> getAllAnimals();
 
   Optional<Animal> findAnimalById(UUID uuid);
 

@@ -11,18 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
+@Transactional(readOnly = true)
 public class AnimalServiceImpl implements AnimalService {
 
   private final AnimalRepository animalRepository;
 
   @Override
-  @Transactional
-  public List<Animal> findAnimals() {
+  public List<Animal> getAllAnimals() {
     return animalRepository.findAll();
   }
 
   @Override
-  @Transactional
   public Optional<Animal> findAnimalById(UUID uuid) {
     return animalRepository.findById(uuid);
   }
