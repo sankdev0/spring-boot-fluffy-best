@@ -30,19 +30,18 @@ public class AnimalTypeRestController {
         return animalTypeService.getAll();
     }
 
-    @GetMapping(value = "/{animalTypeId}/animals", produces = {"application/hal+json"})
-    public CollectionModel<Animal> getAnimalsForAnimalType(@PathVariable final String animalTypeId) {
-        int theId = Integer.parseInt(animalTypeId);
+    @GetMapping(value = "/{theId}/animals", produces = {"application/hal+json"})
+    public CollectionModel<Animal> getAnimalsForAnimalType(@PathVariable int theId) {
         List<Animal> animals = animalService.getByType(theId);
 
         animals.forEach(animal -> {
             Link selfLink = linkTo(methodOn(AnimalRestController.class)
-                    .getAnimalById(animal.getId().toString())).withSelfRel();
+                    .getAnimalById(animal.getId())).withSelfRel();
             animal.add(selfLink);
         });
 
         Link link = linkTo(methodOn(AnimalTypeRestController.class)
-                .getAnimalsForAnimalType(animalTypeId)).withSelfRel();
+                .getAnimalsForAnimalType(theId)).withSelfRel();
         return CollectionModel.of(animals, link);
     }
 

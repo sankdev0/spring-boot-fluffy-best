@@ -39,9 +39,9 @@ public class AnimalRestController {
         return CollectionModel.of(animals, link);
     }
 
-    @GetMapping("/{animalId}")
-    public Animal getAnimalById(@PathVariable String animalId) {
-        return animalService.getById(UUID.fromString(animalId)).orElseThrow();
+    @GetMapping("/{theId}")
+    public Animal getAnimalById(@PathVariable UUID theId) {
+        return animalService.getById(theId).orElseThrow();
     }
 
 }

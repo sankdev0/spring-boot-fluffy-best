@@ -1,16 +1,10 @@
 package com.sankdev.fluffybest.entity;
 
-import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "product_category")
@@ -19,14 +13,14 @@ import lombok.Setter;
 @Setter
 public class ProductCategory {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-  private Set<Product> products;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private Set<Product> products;
 
 }
