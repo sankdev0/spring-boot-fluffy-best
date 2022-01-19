@@ -1,15 +1,16 @@
 package com.sankdev.fluffybest.service;
 
 import com.sankdev.fluffybest.entity.Animal;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface AnimalService {
 
-  List<Animal> getAllAnimals();
+    List<Animal> getAll();
 
-  Optional<Animal> getAnimalById(UUID uuid);
+    Optional<Animal> getById(UUID uuid);
 
-  List<Animal> getAnimalsByType(int theTypeId);
+    List<Animal> getByType(int theTypeId);
 }
