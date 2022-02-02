@@ -1,6 +1,7 @@
 package com.sankdev.fluffybest.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.hateoas.RepresentationModel;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "animal")
+@NoArgsConstructor
 @Getter
 @Setter
 public class Animal extends RepresentationModel<Animal> {
